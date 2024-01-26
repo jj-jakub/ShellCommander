@@ -11,8 +11,8 @@ class StartClicking(
     private val executeClickCommand: ExecuteClickCommand,
 ) {
     operator fun invoke(indefinitely: Boolean) {
-        val basicSequence = clickRepository.getDefaultBasicSequence()
         do {
+            val basicSequence = clickRepository.getDefaultBasicSequence()
             repeat(basicSequence.repeatTimes) {
                 basicSequence.events.forEach { event ->
                     when (event) {
