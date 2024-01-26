@@ -1,6 +1,6 @@
 package domain.click
 
-import domain.ExecuteClickCommand
+import domain.commands.ExecuteClickCommand
 import domain.model.basic.Pause
 import domain.model.basic.Point
 import domain.model.basic.Square

@@ -1,4 +1,4 @@
-package domain
+package domain.commands
 
 import domain.model.calculated.ClickPoint
 

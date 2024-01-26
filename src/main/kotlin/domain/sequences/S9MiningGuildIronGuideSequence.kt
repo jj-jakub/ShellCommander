@@ -16,16 +16,16 @@ class S9MiningGuildIronGuideSequence : ComposedSequence {
         }
     )
 
-    private val ironSq1 = Square(1444.0F, 786.0F, 1516.0F, 850.0F)
-    private val ironSq2 = Square(1369.0F, 708.0F, 1425.0F, 759.0F)
-    private val ironSq3 = Square(1456.0F, 636.0F, 1511.0F, 691.0F)
+    private val ironSq1 = Square(1420.0F, 796.0F, 1495.0F, 839.0F)
+    private val ironSq2 = Square(1342.0F, 701.0F, 1398.0F, 759.0F)
+    private val ironSq3 = Square(1441.0F, 635.0F, 1506.0F, 684.0F)
     private val miningDelay = Pause(1000, 1600)
 
-    private val bankSq = Square(532.0F, 919.0F, 605.0F, 991.0F)
+    private val bankSq = Square(375.0F, 918.0F, 421.0F, 978.0F)
     private val emptyEqSq = Square(1765.0F, 1280.0F, 1839.0F, 1356.0F)
     private val emptyEqDelay = Pause(500, 700)
 
-    private val standingSq = Square(2060.0F, 547.0F, 2112.0F, 592.0F)
+    private val standingSq = Square(2122.0F, 579.0F, 2153.0F, 598.0F)
     private val runningDelay = Pause(5000, 6000)
 
     private val miningCircleMoves = listOf(

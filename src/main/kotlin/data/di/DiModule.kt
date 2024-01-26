@@ -1,7 +1,7 @@
 package data.di
 
 import data.click.DefaultClickRepository
-import domain.ExecuteClickCommand
+import domain.commands.ExecuteClickCommand
 import domain.click.CalculateClickPoint
 import domain.click.ClickRepository
 import domain.click.StartClicking
