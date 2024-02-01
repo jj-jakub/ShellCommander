@@ -5,4 +5,5 @@ data class Square(
     val y1: Float,
     val x2: Float,
     val y2: Float,
+    val duration: Pause? = null,
 ) : BasicSequenceEvent
