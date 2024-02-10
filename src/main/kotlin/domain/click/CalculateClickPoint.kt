@@ -4,8 +4,8 @@ import domain.model.basic.Point
 import domain.model.basic.Square
 import domain.model.calculated.ClickPoint
 
-private const val MIN_CLICK_DURATION_MS = 51
-private const val MAX_CLICK_DURATION_MS = 243
+const val MIN_CLICK_DURATION_MS = 51
+const val MAX_CLICK_DURATION_MS = 243
 
 class CalculateClickPoint {
     operator fun invoke(square: Square): ClickPoint {

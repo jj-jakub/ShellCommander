@@ -7,3 +7,9 @@ data class Square(
     val y2: Float,
     val duration: Pause? = null,
 ) : BasicSequenceEvent
+
+data class MenuSquareClick(
+    val dyTop: Int,
+    val dyBottom: Int,
+    val dxTolerance: Int,
+) : BasicSequenceEvent
