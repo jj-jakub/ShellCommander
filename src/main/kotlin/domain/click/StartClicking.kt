@@ -16,9 +16,17 @@ class StartClicking(
             repeat(basicSequence.repeatTimes) {
                 basicSequence.events.forEach { event ->
                     when (event) {
-                        is Pause -> Thread.sleep(
-                            (event.delayBottom..(event.delayTop ?: event.delayBottom)).random().toLong()
-                        )
+                        is Pause -> {
+                            val scheduledDelay =
+                                (event.delayBottom..(event.delayTop ?: event.delayBottom)).random().toLong()
+                            var elapsedDelay = 0L
+                            val period = 1000L
+                            while (elapsedDelay < scheduledDelay) {
+                                println("Time till next click: ${scheduledDelay - elapsedDelay}")
+                                Thread.sleep(period)
+                                elapsedDelay += period
+                            }
+                        }
 
                         is Point -> {
 //                            TODO()
