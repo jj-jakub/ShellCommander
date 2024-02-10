@@ -14,10 +14,6 @@ class S9BlastFurnaceMithGoldSequence : ComposedSequence {
                 addAll(miningCircleMoves)
             }
             addAll(drinkStaminaMoves)
-            repeat(2) {
-                addAll(miningCircleMoves)
-            }
-            addAll(drinkStaminaMoves)
         }
     )
 
@@ -29,14 +25,14 @@ class S9BlastFurnaceMithGoldSequence : ComposedSequence {
     private val mithrilBankSq = Square(1437.0F, 1056.0F, 1502.0F, 1118.0F)
     private val coalBagEqSqLong = Square(2428.0F, 628.0F, 2494.0F, 695.0F, Pause(350, 500))
     private val bankEmptyCoalBagSq = MenuSquareClick(
-        570
+        580
         /**553*/
         , 600
         /**625*/
         , 280
     )
     private val bankFillCoalBagSq = MenuSquareClick(
-        570
+        580
         /**553*/
         , 600
         /**625*/
@@ -63,7 +59,7 @@ class S9BlastFurnaceMithGoldSequence : ComposedSequence {
     private val walkDelay4 = Pause(5 * 1000, 6 * 1000)
     private val emptyBarsEqSq = Square(2542.0F, 632.0F, 2608.0F, 688.0F)
 
-    private val staminaBankSq = Square(1162.0F, 1052.0F, 1230.0F, 1118.0F)
+    private val staminaBankSq = Square(1029.0F, 1163.0F, 1087.0F, 1230.0F)
     private val staminaEqSq = Square(2552.0F, 632.0F, 2600.0F, 693.0F)
     private val staminaEqSq2 = Square(2670.0F, 632.0F, 2713.0F, 693.0F)
     private val bankSq = Square(1534.0F, 693.0F, 1585.0F, 749.0F)
