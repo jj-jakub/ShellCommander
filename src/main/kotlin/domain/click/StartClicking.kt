@@ -26,7 +26,15 @@ class StartClicking(
                             var elapsedDelay = 0L
                             val period = 1000L
                             while (elapsedDelay < scheduledDelay) {
-                                println("Time till next click: ${scheduledDelay - elapsedDelay}")
+                                println(
+                                    "Time till next event ${
+                                        basicSequence.events.getOrNull(
+                                            basicSequence.events.indexOf(
+                                                event
+                                            ) + 2
+                                        )
+                                    }: ${scheduledDelay - elapsedDelay}"
+                                )
                                 Thread.sleep(period)
                                 elapsedDelay += period
                             }
