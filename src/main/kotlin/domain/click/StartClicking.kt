@@ -1,17 +1,21 @@
 package domain.click
 
 import domain.commands.ExecuteClickCommand
+import domain.commands.ExecuteDelayCommand
 import domain.model.basic.MenuSquareClick
 import domain.model.basic.Pause
 import domain.model.basic.Point
+import domain.model.basic.Polygon
 import domain.model.basic.Square
 import domain.model.calculated.ClickPoint
 
 class StartClicking(
     private val clickRepository: ClickRepository,
-    private val calculateClickPoint: CalculateClickPoint,
+    private val calculateSquareClickPoint: CalculateSquareClickPoint,
+    private val calculatePolygonClickPoint: CalculatePolygonClickPoint,
     private val calculateMenuClickPoint: CalculateMenuClickPoint,
     private val executeClickCommand: ExecuteClickCommand,
+    private val executeDelayCommand: ExecuteDelayCommand,
 ) {
     operator fun invoke(indefinitely: Boolean) {
         do {
@@ -20,32 +24,14 @@ class StartClicking(
             repeat(basicSequence.repeatTimes) {
                 basicSequence.events.forEach { event ->
                     when (event) {
-                        is Pause -> {
-                            val scheduledDelay =
-                                (event.delayBottom..(event.delayTop ?: event.delayBottom)).random().toLong()
-                            var elapsedDelay = 0L
-                            val period = 1000L
-                            while (elapsedDelay < scheduledDelay) {
-                                println(
-                                    "Time till next event ${
-                                        basicSequence.events.getOrNull(
-                                            basicSequence.events.indexOf(
-                                                event
-                                            ) + 2
-                                        )
-                                    }: ${scheduledDelay - elapsedDelay}"
-                                )
-                                Thread.sleep(period)
-                                elapsedDelay += period
-                            }
-                        }
+                        is Pause -> executePause(event = event)
 
                         is Point -> {
 //                            TODO()
                         }
 
                         is Square -> {
-                            val calculatedPoint = calculateClickPoint(square = event)
+                            val calculatedPoint = calculateSquareClickPoint(square = event)
                             previousCalculatedPoint = calculatedPoint
                             executeClickCommand(clickPoint = calculatedPoint)
                         }
@@ -55,11 +41,23 @@ class StartClicking(
                                 square = previousCalculatedPoint?.point ?: return,
                                 menuSquareClick = event,
                             )
-                            executeClickCommand(calculateMenuClickPoint)
+                            executeClickCommand(clickPoint = calculateMenuClickPoint)
+                        }
+
+                        is Polygon -> {
+                            val calculatedPoint = calculatePolygonClickPoint(polygon = event)
+                            previousCalculatedPoint = calculatedPoint
+                            executeClickCommand(clickPoint = calculatedPoint)
                         }
                     }
                 }
             }
         } while (indefinitely)
+    }
+
+    private fun executePause(event: Pause) {
+        executeDelayCommand(event) { timeLeft ->
+            println("Time till next event: $timeLeft")
+        }
     }
 }

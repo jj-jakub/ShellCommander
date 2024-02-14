@@ -1,14 +1,17 @@
 package domain.commands
 
-import domain.model.calculated.ClickPoint
+import domain.model.basic.Pause
 
 class ExecuteDelayCommand {
-    operator fun invoke(clickPoint: ClickPoint) {
-        val x = clickPoint.point.x
-        val y = clickPoint.point.y
-        val duration = clickPoint.duration
-        val cmd = "adb -s 2a2268c63d027ece shell input swipe $x $y $x $y $duration"
-        Runtime.getRuntime().exec(cmd).waitFor()
-        println("Executed command: $cmd")
+    operator fun invoke(pause: Pause, onTimeLeftUpdated: (Long) -> Unit) {
+        val scheduledDelay =
+            (pause.delayBottom..(pause.delayTop ?: pause.delayBottom)).random().toLong()
+        var elapsedDelay = 0L
+        val period = 1000L
+        while (elapsedDelay < scheduledDelay) {
+            onTimeLeftUpdated(scheduledDelay - elapsedDelay)
+            Thread.sleep(period)
+            elapsedDelay += period
+        }
     }
 }
