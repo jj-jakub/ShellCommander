@@ -13,8 +13,8 @@ class S9BattlestavesGESequence : ComposedSequence {
         }
     )
 
-    // Camera zoom = 4/5 dots Direction East
-    private val bankSq = Square(1375.0F, 611.0F, 1540.0F, 676.0F)
+    // Camera zoom = 4/5 dots Direction East, camera full down
+    private val bankSq = Square(1263.0F, 564.0F, 1581.0F, 840.0F)
     private val delay1 = Pause(800, 1000)
     private val emptyEqSq = Square(1765.0F, 1280.0F, 1839.0F, 1356.0F)
     private val delay2 = Pause(500, 700)
