@@ -1,12 +1,12 @@
 package data.click
 
+import data.inventory.GetInventoryClickFieldsRepository
 import domain.click.ClickRepository
 import domain.model.basic.BasicSequence
-import domain.sequences.S9BattlestavesGESequence
-import domain.sequences.S9ForesterFireSequence
-import domain.sequences.S9LongbowsGESequence
-import domain.sequences.S9SeersMaplesSequence
+import domain.sequences.test.ClickEveryEqFieldSequence
 
-class DefaultClickRepository : ClickRepository {
-    override fun getDefaultBasicSequence(): BasicSequence = S9LongbowsGESequence().getSequence()
+class DefaultClickRepository(
+    private val getInventoryClickFieldsRepository: GetInventoryClickFieldsRepository,
+) : ClickRepository {
+    override fun getDefaultBasicSequence(): BasicSequence = ClickEveryEqFieldSequence(getInventoryClickFieldsRepository.invoke()).getSequence()
 }

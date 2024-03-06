@@ -1,16 +1,18 @@
 package data.di
 
 import data.click.DefaultClickRepository
-import domain.click.CalculateSquareClickPoint
+import data.inventory.GetInventoryClickFieldsRepository
 import domain.click.CalculateMenuClickPoint
 import domain.click.CalculatePolygonClickPoint
+import domain.click.CalculateSquareClickPoint
 import domain.click.ClickRepository
 import domain.click.StartClicking
 import domain.commands.ExecuteClickCommand
 import domain.commands.ExecuteDelayCommand
 
 object DiModule {
-    val clickRepository: ClickRepository = DefaultClickRepository()
+    val getInventoryClickFieldsRepository = GetInventoryClickFieldsRepository()
+    val clickRepository: ClickRepository = DefaultClickRepository(getInventoryClickFieldsRepository = getInventoryClickFieldsRepository)
 
     val calculateSquareClickPoint = CalculateSquareClickPoint()
     val calculatePolygonClickPoint = CalculatePolygonClickPoint()
