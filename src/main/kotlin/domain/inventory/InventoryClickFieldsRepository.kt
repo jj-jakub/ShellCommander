@@ -55,4 +55,34 @@ interface InventoryClickFieldsRepository {
     fun getField72(): Square = Square(secondColumnX1, seventhRowY1, secondColumnX2, seventhRowY2)
     fun getField73(): Square = Square(thirdColumnX1, seventhRowY1, thirdColumnX2, seventhRowY2)
     fun getField74(): Square = Square(fourthColumnX1, seventhRowY1, fourthColumnX2, seventhRowY2)
+    fun getAllFields() = listOf(
+        getField11(),
+        getField12(),
+        getField13(),
+        getField14(),
+        getField21(),
+        getField22(),
+        getField23(),
+        getField24(),
+        getField31(),
+        getField32(),
+        getField33(),
+        getField34(),
+        getField41(),
+        getField42(),
+        getField43(),
+        getField44(),
+        getField51(),
+        getField52(),
+        getField53(),
+        getField54(),
+        getField61(),
+        getField62(),
+        getField63(),
+        getField64(),
+        getField71(),
+        getField72(),
+        getField73(),
+        getField74(),
+    )
 }
